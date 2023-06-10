@@ -1,15 +1,18 @@
 from django.shortcuts import render
+from .models import Coin
 
-coins = [
-        {'img': "../static/images/sample/sample-coin1.jpeg", 'denomination': "Half Peso", 'year': "1960", 'country': "Dominican Republic", 'for_sale': True, 'comment': "Mint condition"},
-        {'img': "../static/images/sample/sample-coin2.jpeg", 'denomination': "Half Peso Silver", 'year': "1951", 'country': "Dominican Republic", 'for_sale': False, 'comment': "Mint condition"},
-        {'img': "../static/images/sample/sample-coin3.jpeg", 'denomination': "25 Cents", 'year': "1963", 'country': "Dominican Republic", 'for_sale': False, 'comment': "Mint condition"}
-]
-
-def home(request):
+def coins_index(request):
+    coins = Coin.objects.all()
     return render(request, 'extends/home.html', {
         'title': "Home",
         'coins': coins
+    })
+
+def coin_detail(request, coin_id):
+    coin = Coin.objects.get(id=coin_id) 
+    return render(request, 'extends/details.html', {
+        'title': 'Details',
+        'coin': coin
     })
 
 def about(request):

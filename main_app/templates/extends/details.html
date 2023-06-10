@@ -1,0 +1,42 @@
+{%extends "../base.html"%}
+{% block content %}
+    <div class="container">
+        <h4>Coin Details</h4>
+        <div class="row">
+            <div class="right">
+                {% if coin.for_sale == True %}
+                <b>This coin is for sale</b>
+                {% else %}
+                <b>This coin is not for sale</b>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <b>Country:</b> {{ coin.country }}
+        </div>
+        <div class="row">
+            <b>Denomination:</b> {{ coin.denomination }}
+        </div>
+        <div class="row">
+            <b>Year:</b> {{ coin.year }}
+        </div>
+        <div class="row">
+            {% if coin.circulated == True %}
+            <b>Circulated:</b> YES
+            {% else %}
+            <b>Circulated:</b> NO
+            {% endif %}
+        </div>
+        <div class="row">
+            <b>Condition:</b> {{ coin.condition }}
+        </div>
+        <div class="row">
+            <b>Coinage Material (alloy):</b> {{ coin.alloy }}
+        </div>
+        <div class="row">
+            <b>Details:</b> <p>{{ coin.details }}</p>
+        </div>
+        <img src="../{{ coin.img }}" class="coin-details-img"/></p>
+    </div>
+
+{% endblock %}

@@ -8,7 +8,7 @@
 
 ---
 ## **Description**
-Coin Collector is a great tool to keep track of your coins collection and share it with other avid collectors. You have the option to keep your collection private or share it with the world.
+Coin Collector is a great tool to keep track of your coin collection and share it with other avid collectors. You have the option to keep your collection private or share it with the world.
 
 ---
 ### **Technologies, Libraries and Frameworks Used**

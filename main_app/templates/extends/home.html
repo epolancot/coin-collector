@@ -1,15 +1,22 @@
 {%extends "../base.html"%}
 
 {% block content %}
-<h4>Coins List</h4>
-{% for coin in coins %}
-<div class="card">
-    <a href="/coins/{{ coin.id }}">
-    <div class="card-content">
-        <span class="card-title">{{ coin.year }} {{ coin.country }} {{ coin.denomination }}</span>
-        <img src="{{ coin.img }}" class="coin-img"/></p>
+<div class="container center">
+    {% for coin in coins %}
+    <div class="col s6 m6">
+        <a href="{% url 'home' %}{{ coin.id }}">
+            <div class="card medium hoverable">
+                <div class="card-image">
+                    <img src="{{ coin.img }}">
+                </div>
+                <div class="card-content">
+                    <div class="center-align">
+                    {{ coin.year}} - {{ coin.country }} {{ coin.denomination}}
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
-    </a>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}

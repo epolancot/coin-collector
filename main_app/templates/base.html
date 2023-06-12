@@ -10,36 +10,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'javascript/js.js' %}"></script>
     <title>{{ title }}</title>
 </head>
 
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="/" class="brand-logo"><span class="logo-font">Coin Collector</span></a>
+            <a href="{% url 'index' %}" class="brand-logo"><span class="logo-font">Coin Collector</span></a>
             <a href="#" data-target="mobile" class="right sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="/"><i class="material-icons">home</i></a></li>
-                <li><a href="/about"><i class="material-icons">quiz</i></a></li>
+                <li><a href="{% url 'home' %}"><i class="material-icons">home</i></a></li>
+                <li><a href="{% url 'coins_create' %}"><i class="material-icons">add_circle</i></a></li>
+                <li><a href="{% url 'about' %}"><i class="material-icons">quiz</i></a></li>
             </ul>
         </div>
     </nav>
-
     <ul class="sidenav" id="mobile">
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
     </ul>
-
     <main>
         {% block content %}
         {% endblock %}
     </main>
     <footer></footer>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="{% static 'javascript/js.js' %}"></script>
-
 </body>
 
 </html>

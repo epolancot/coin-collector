@@ -1,42 +1,81 @@
 {%extends "../base.html"%}
 {% block content %}
     <div class="container">
-        <h4>Coin Details</h4>
-        <div class="row">
-            <div class="right">
-                {% if coin.for_sale == True %}
-                <b>This coin is for sale</b>
-                {% else %}
-                <b>This coin is not for sale</b>
-                {% endif %}
+        <div class="row" style="display: block;">
+            <div class="col s6">
+                <div class="card medium">
+                    <div class="card-content">
+                            <b>Country:</b> {{ coin.country }}
+                            <br/>
+                            <br/>
+                            <b>Denomination:</b> {{ coin.denomination }}
+                            <br/>
+                            <br/>
+                            <b>Year:</b> {{ coin.year }}
+                            <br/>
+                            <br/>
+                            {% if coin.circulated == True %}
+                                <b>Circulated:</b> YES
+                            {% else %}
+                                <b>Circulated:</b> NO
+                            {% endif %}
+                            <br/>
+                            <br/>
+                            <b>Condition:</b> {{ coin.condition }} <a href="https://www.mintstategold.com/investor-education/cat/about-coin-grading/post/point-grading-scale/">[ View Chart ]</a>
+                            <br/>
+                            <br/>
+                            <b>Coinage Material (alloy):</b> {{ coin.alloy }}
+                    </div>
+                    <div class="card-action">
+                        <a href="{% url 'coin_update' coin.id %}">Edit</a>
+                        <a href="{% url 'coin_delete' coin.id %}">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6">
+                <div class="card medium">
+                <div class="row">
+                    <div class="card-content">
+                        <img src="../{{ coin.img }}" class="details-coin-img"/>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
         <div class="row">
-            <b>Country:</b> {{ coin.country }}
+            <b>Additional info:</b> <p>{{ coin.details }}</p>
         </div>
-        <div class="row">
-            <b>Denomination:</b> {{ coin.denomination }}
+        {% if coin.for_sale == True %}
+            <div class="row">
+                <table class="striped">
+                    <thead>
+                        <tr>
+                        <th>Date</th>
+                        <th>Bid</th>
+                        <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for bid in coin.bid_set.all %}
+                            <tr>
+                                <td>{{bid.date}}</td>
+                                <td>${{bid.amount}}.00</td>
+                                <td>{{bid.comment}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table> 
+            </div>
+            <div class="row">
+                <form action="{% url 'add_bid' coin.id %}" method="POST">
+                    {% csrf_token %}
+                    {{ bidding_form.as_p }}
+                    <input type="submit" class="btn" value="Add Bid">
+                </form>
+            </div>
+        {% else %}
+            <b>This coin is not for sale</b>
+        {% endif %}
         </div>
-        <div class="row">
-            <b>Year:</b> {{ coin.year }}
-        </div>
-        <div class="row">
-            {% if coin.circulated == True %}
-            <b>Circulated:</b> YES
-            {% else %}
-            <b>Circulated:</b> NO
-            {% endif %}
-        </div>
-        <div class="row">
-            <b>Condition:</b> {{ coin.condition }}
-        </div>
-        <div class="row">
-            <b>Coinage Material (alloy):</b> {{ coin.alloy }}
-        </div>
-        <div class="row">
-            <b>Details:</b> <p>{{ coin.details }}</p>
-        </div>
-        <img src="../{{ coin.img }}" class="coin-details-img"/></p>
     </div>
-
 {% endblock %}

@@ -27,5 +27,5 @@ MVT
 ![Main] Coming soon!
 
 ### Entity Relationship Diagram (ERD)
-![ERD](/main_app/static/images/readme/ERD.png)
+![ERD](/main_app/static/images/readme/ERD1.png)
 

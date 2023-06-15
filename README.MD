@@ -32,7 +32,7 @@ Displays all the information for each coin. If the owner marks the coin as "for 
 ![Detail](/main_app/static/images/readme/s2-coin-detail.png)
 
 Not for sale example
-![Detail](/main_app/static/images/readme/s2b-coin-detail.png)
+![Detail](/main_app/static/images/readme/s2-coin-detail-b.png)
 
 
 ### Certifications

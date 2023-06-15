@@ -28,8 +28,12 @@ Displays user's coin collecction.
 ![Main](/main_app/static/images/readme/s1-home.png)
 
 ### Coin detail
-Display all the information for each coin. If the owner marks the marks the coin as "for sale", bidding option is displayed.
+Displays all the information for each coin. If the owner marks the coin as "for sale", bidding option is displayed.
 ![Detail](/main_app/static/images/readme/s2-coin-detail.png)
+
+Not for sale example
+![Detail](/main_app/static/images/readme/s2b-coin-detail.png)
+
 
 ### Certifications
 The admin is allowed to create new certification options. It is also possible to Edit or Delete existing ones.

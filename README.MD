@@ -24,7 +24,17 @@ MVT
 ## Screenshots
 
 ### Home
-![Main] Coming soon!
+Displays user's coin collecction.
+![Main](/main_app/static/images/readme/s1-home.png)
+
+### Coin detail
+Display all the information for each coin. If the owner marks the marks the coin as "for sale", bidding option is displayed.
+![Detail](/main_app/static/images/readme/s2-coin-detail.png)
+
+### Certifications
+The admin is allowed to create new certification options. It is also possible to Edit or Delete existing ones.
+![Certification](/main_app/static/images/readme/s3-certifications.png)
+
 
 ### Entity Relationship Diagram (ERD)
 ![ERD](/main_app/static/images/readme/ERD1.png)

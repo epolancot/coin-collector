@@ -11,7 +11,12 @@
                 </div>
                 <div class="card-content">
                     <div class="center-align">
-                    {{ coin.year}} - {{ coin.country }} {{ coin.denomination}}
+                    {% if coin.country == "DOM" %}
+                    Dominican Republic<br/>
+                    {% else %}
+                    United States<br/>
+                    {% endif %}
+                    {{ coin.year}} - {{ coin.denomination}}
                     </div>
                 </div>
             </div>

@@ -5,7 +5,12 @@
             <div class="col s6">
                 <div class="card medium">
                     <div class="card-content">
-                            <b>Country:</b> {{ coin.country }}
+                            <b>Country:</b> 
+                            {% if coin.country == "DOM" %}
+                            Dominican Republic
+                            {% else %}
+                            United States
+                            {% endif %}
                             <br/>
                             <br/>
                             <b>Denomination:</b> {{ coin.denomination }}
@@ -21,10 +26,25 @@
                             {% endif %}
                             <br/>
                             <br/>
-                            <b>Condition:</b> {{ coin.condition }} <a href="https://www.mintstategold.com/investor-education/cat/about-coin-grading/post/point-grading-scale/">[ View Chart ]</a>
+                            <b>Condition:</b> 
+                            {% if coin.condition == "M" %}
+                            Mint
+                            {% else %}
+                            Good
+                            {% endif %}
+                            <a href="https://www.mintstategold.com/investor-education/cat/about-coin-grading/post/point-grading-scale/">[ View Chart ]</a>
                             <br/>
                             <br/>
                             <b>Coinage Material (alloy):</b> {{ coin.alloy }}
+                            <br/>
+                            <br/>
+                            <b>Certifications:</b>
+                            <br/>
+                            {% for certification in certifications %} 
+                            <a href="{% url 'certifications' %}">
+                            <img src="../{{ certification.logo }}" style="width:40px;height:30px;">
+                            </a>
+                            {% endfor %}
                     </div>
                     <div class="card-action">
                         <a href="{% url 'coin_update' coin.id %}">Edit</a>
@@ -36,7 +56,7 @@
                 <div class="card medium">
                 <div class="row">
                     <div class="card-content">
-                        <img src="../{{ coin.img }}" class="details-coin-img"/>
+                        <img src="../{{ coin.img }}" class="details-coin-img" style="width: 61vmin; height:37vmin"/>
                     </div>
                 </div>
                 </div>

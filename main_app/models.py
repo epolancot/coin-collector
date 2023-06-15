@@ -15,6 +15,26 @@ CONDITION = (
     ('P', 'Poor')
 )
 
+INSTITUTION = (
+    ('PCGS', 'Profesional Coin Granding Service'), 
+    ('NGC', 'Numismatic Guaranty Company'), 
+    ('ANACS', 'American Numismatic Association')
+)
+
+class Certification(models.Model):
+    logo = models.TextField(max_length=300, default='../static/images/default-coin-img.gif')
+    institution = models.CharField(
+        max_length=10,
+        choices=INSTITUTION,
+        default=INSTITUTION[0][0])
+    description = models.TextField(max_length=500)
+
+    def __str__(self):
+        return self.institution
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'certification_id': self.id})
+
 class Coin(models.Model):
     img = models.TextField(max_length=300, default='../static/images/default-coin-img.gif')
     denomination = models.CharField(max_length=35)
@@ -31,6 +51,7 @@ class Coin(models.Model):
         default=CONDITION[0][0])
     alloy = models.CharField(max_length=15, default='Unknown')
     details = models.TextField(max_length=500)
+    certifications = models.ManyToManyField(Certification)
 
     def __str__(self):
         return self.country
@@ -44,6 +65,7 @@ class Bid(models.Model):
     amount = models.IntegerField()
     comment = models.TextField(max_length=500)
     coin = models.ForeignKey(Coin, on_delete=models.CASCADE)
+
 
     # def __str__(self):
     #     return f"${self.get_amount_display()} on {self.date}"

@@ -1,0 +1,35 @@
+{%extends "../base.html"%}
+
+{% block content %}
+<div class="container">
+    <div class ="row">
+        <div class="col">
+            <h1 class="header">Certifications</h1>
+        </div>
+        <div class="col right">
+            <a href="{% url 'certifications_create' %}">
+                <h4 class="header"><i class="material-icons">post_add</i> Add New</h4>
+            </a>
+        </div>
+    </div>
+    {% for certification in certifications %}
+    <div class="col s12 m7">
+        <div class="card horizontal">
+            <div class="card-image valign-wrapper">
+                <img src="{{ certification.logo }}">
+            </div>
+            <div class="card-stacked">
+                <h2 class="header">{{ certification.institution }}</h2>
+                <div class="card-content">
+                    <p>{{ certification.description }}</p>
+                </div>
+                <div class="card-action">
+                    <a href="{% url 'certification_update' certification.id %}">Edit</a>
+                    <a href="{% url 'certification_delete' certification.id %}">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

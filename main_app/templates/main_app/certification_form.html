@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container">
-    <h5>Add Coin</h5>
+    <h5>Add Certification</h5>
     <!-- Leaving the action empty makes the form post to the same url used to display it -->
     <form action="" method="POST">
         <!-- Django requires the following for security purposes -->
@@ -26,14 +26,8 @@
 </div>
 
 <script>
-    const countryEl = document.getElementById('id_country');
-    M.FormSelect.init(countryEl);
-
-    const conditionEl = document.getElementById('id_condition');
-    M.FormSelect.init(conditionEl);
-
-    const certificationEl = document.getElementById('id_certifications');
-    M.FormSelect.init(certificationEl);
+    const institutionEl = document.getElementById('id_institution');
+    M.FormSelect.init(institutionEl);
 </script> 
 
 {% endblock %}
